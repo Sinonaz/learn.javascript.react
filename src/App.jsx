@@ -13,7 +13,11 @@ export const App = () => {
 
 	return (
 		<Layout>
-			<Tabs items={restaurants} changeItem={changeItem} />
+			<Tabs
+				items={restaurants}
+				currentItem={restaurant}
+				changeItem={changeItem}
+			/>
 
 			<Restaurant
 				key={restaurant.id}
