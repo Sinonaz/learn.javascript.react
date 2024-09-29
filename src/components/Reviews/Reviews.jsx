@@ -1,4 +1,4 @@
-import { ReviewItem } from "./ReviewItem"
+import { ReviewItem } from "../ReviewItem/ReviewItem"
 
 export const Reviews = ({ reviews }) => {
 	return (

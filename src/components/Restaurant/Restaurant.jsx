@@ -1,5 +1,5 @@
-import { Menu } from "./Menu"
-import { Reviews } from "./Reviews"
+import { Menu } from "../Menu/Menu"
+import { Reviews } from "../Reviews/Reviews"
 
 export const Restaurant = ({ id, name, menu, reviews }) => {
 	if (!name) return null

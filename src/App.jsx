@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Layout } from "./components/Layout"
-import { Restaurant } from "./components/Restaurant"
-import { Tabs } from "./components/Tabs"
+import { Layout } from "./components/Layout/Layout"
+import { Restaurant } from "./components/Restaurant/Restaurant"
+import { Tabs } from "./components/Tabs/Tabs"
 import { restaurants } from "./mock"
 
 export const App = () => {

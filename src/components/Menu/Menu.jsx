@@ -1,4 +1,4 @@
-import { MenuItem } from "./MenuItem"
+import { MenuItem } from "../MenuItem/MenuItem"
 
 export const Menu = ({ menu }) => {
 	if (menu.length < 1) return null
