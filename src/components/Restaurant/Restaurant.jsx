@@ -1,4 +1,5 @@
 import { Menu } from "../Menu/Menu"
+import { ReviewForm } from "../ReviewForm/ReviewForm"
 import { Reviews } from "../Reviews/Reviews"
 
 export const Restaurant = ({ id, name, menu, reviews }) => {
@@ -11,6 +12,8 @@ export const Restaurant = ({ id, name, menu, reviews }) => {
 			<Menu menu={menu} />
 
 			<Reviews reviews={reviews} />
+
+			<ReviewForm />
 		</div>
 	)
 }
