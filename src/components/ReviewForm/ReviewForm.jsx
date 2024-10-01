@@ -3,22 +3,8 @@ import { ACTION_TYPE } from "./constants"
 import { useForm } from "./use-form"
 
 export const ReviewForm = () => {
-	const { name, text, rating, setAction } = useForm()
-
-	const changeRating = action => {
-		switch (action) {
-			case "increase":
-				if (rating < 5) {
-					setAction(ACTION_TYPE.RATING, rating + 1)
-				}
-				break
-			case "decrease":
-				if (rating > 1) {
-					setAction(ACTION_TYPE.RATING, rating - 1)
-				}
-				break
-		}
-	}
+	const { name, text, rating, setAction, increaseRating, decreaseRating } =
+		useForm()
 
 	return (
 		<form onReset={() => setAction(ACTION_TYPE.CLEAR)}>
@@ -49,8 +35,8 @@ export const ReviewForm = () => {
 					<input type='hidden' name='rating' value={rating} />
 					<Counter
 						value={rating}
-						increase={() => changeRating("increase")}
-						decrease={() => changeRating("decrease")}
+						increase={() => increaseRating(rating)}
+						decrease={() => decreaseRating(rating)}
 					/>
 				</label>
 			</div>

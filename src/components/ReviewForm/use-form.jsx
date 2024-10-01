@@ -39,10 +39,24 @@ export const useForm = () => {
 		dispatch({ type: type, payload: value })
 	}
 
+	const increaseRating = value => {
+		if (value < 5) {
+			setAction(ACTION_TYPE.RATING, value + 1)
+		}
+	}
+
+	const decreaseRating = value => {
+		if (value > 1) {
+			setAction(ACTION_TYPE.RATING, value - 1)
+		}
+	}
+
 	return {
 		name,
 		text,
 		rating,
 		setAction,
+		increaseRating,
+		decreaseRating,
 	}
 }
