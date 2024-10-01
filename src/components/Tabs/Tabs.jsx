@@ -1,4 +1,4 @@
-import { Tab } from "./Tab"
+import { Tab } from "../Tab/Tab"
 
 export const Tabs = ({ items, changeItem, currentItem }) =>
 	items.map(({ id, name }) => (
