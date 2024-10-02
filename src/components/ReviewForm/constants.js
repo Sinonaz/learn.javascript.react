@@ -1,7 +1,7 @@
 export const DEFAULT_FROM_VALUES = {
 	name: "",
 	text: "",
-	rating: 1,
+	rating: 5,
 }
 
 export const ACTION_TYPE = {

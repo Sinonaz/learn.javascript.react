@@ -1,0 +1,7 @@
+.menuItem {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid #d1d9e0;
+}

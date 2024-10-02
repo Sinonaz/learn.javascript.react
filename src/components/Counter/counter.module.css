@@ -1,0 +1,20 @@
+.counter {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  grid-template-columns: 40px 50px 40px;
+  width: fit-content;
+  min-height: 30px;
+  font-size: 14px;
+  background-color: #f6f8fa;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.counterBtn {
+  font-weight: 500;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  cursor: pointer;
+}
