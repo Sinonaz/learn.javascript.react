@@ -2,6 +2,7 @@ import { Counter } from "../Counter/Counter"
 import { ACTION_TYPE } from "./constants"
 import { useForm } from "./use-form"
 import styles from "./reviewForm.module.css"
+import { Button } from "../Button/Button"
 
 export const ReviewForm = () => {
 	const { name, text, rating, setAction, increaseRating, decreaseRating } =
@@ -45,12 +46,8 @@ export const ReviewForm = () => {
 			</div>
 
 			<div className={styles.formFooter}>
-				<button className={styles.formBtn} type='submit'>
-					Send
-				</button>
-				<button className={styles.formBtn} type='reset'>
-					Clear
-				</button>
+				<Button type='submit' className={styles.formBtn} text='Send' />
+				<Button type='reset' className={styles.formBtn} text='Clear' />
 			</div>
 		</form>
 	)

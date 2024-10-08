@@ -1,0 +1,24 @@
+.button {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+
+.dark {
+  background-color: gray;
+  color: white;
+}
+
+.default {
+  color: black;
+}
+
+.active {
+  color: #886701;
+  background-color: #ffcd3a;
+}
