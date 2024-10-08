@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import styles from "./progressBar.module.css"
 
 export const ProgressBar = () => {
 	const [currentPercent, setCurrentPercent] = useState(0)
@@ -17,12 +18,8 @@ export const ProgressBar = () => {
 
 	return (
 		<div
+			className={styles.progressBar}
 			style={{
-				position: "fixed",
-				top: 0,
-				left: 0,
-				backgroundColor: "orange",
-				height: "15px",
 				width: `${currentPercent}%`,
 			}}
 		></div>

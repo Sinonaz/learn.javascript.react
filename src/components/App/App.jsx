@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { Layout } from "./components/Layout/Layout"
-import { Restaurant } from "./components/Restaurant/Restaurant"
-import { Tabs } from "./components/Tabs/Tabs"
-import { restaurants } from "./mock"
+import { Layout } from "../Layout/Layout"
+import { Restaurant } from "../Restaurant/Restaurant"
+import { Tabs } from "../Tabs/Tabs"
+import { restaurants } from "../../mock"
 
 export const App = () => {
 	const [restaurant, setRestaurant] = useState(restaurants[0])

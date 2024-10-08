@@ -1,17 +1,19 @@
 import { Counter } from "../Counter/Counter"
 import { ACTION_TYPE } from "./constants"
 import { useForm } from "./use-form"
+import styles from "./reviewForm.module.css"
 
 export const ReviewForm = () => {
 	const { name, text, rating, setAction, increaseRating, decreaseRating } =
 		useForm()
 
 	return (
-		<form onReset={() => setAction(ACTION_TYPE.CLEAR)}>
+		<form className={styles.form} onReset={() => setAction(ACTION_TYPE.CLEAR)}>
 			<div>
-				<label>
+				<label className={styles.fieldWrap}>
 					Name
 					<input
+						className={styles.field}
 						type='text'
 						name='name'
 						value={name}
@@ -20,9 +22,10 @@ export const ReviewForm = () => {
 				</label>
 			</div>
 			<div>
-				<label>
+				<label className={styles.fieldWrap}>
 					Text
 					<textarea
+						className={styles.field}
 						name='text'
 						value={text}
 						onChange={({ target }) => setAction(ACTION_TYPE.TEXT, target.value)}
@@ -30,7 +33,7 @@ export const ReviewForm = () => {
 				</label>
 			</div>
 			<div>
-				<label>
+				<label className={styles.fieldWrap}>
 					Rating
 					<input type='hidden' name='rating' value={rating} />
 					<Counter
@@ -41,7 +44,14 @@ export const ReviewForm = () => {
 				</label>
 			</div>
 
-			<button type='reset'>Clear</button>
+			<div className={styles.formFooter}>
+				<button className={styles.formBtn} type='submit'>
+					Send
+				</button>
+				<button className={styles.formBtn} type='reset'>
+					Clear
+				</button>
+			</div>
 		</form>
 	)
 }
