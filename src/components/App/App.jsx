@@ -3,6 +3,7 @@ import { Layout } from "../Layout/Layout"
 import { Restaurant } from "../Restaurant/Restaurant"
 import { Tabs } from "../Tabs/Tabs"
 import { restaurants } from "../../mock"
+import { ThemeContextProvider } from "../ThemeContext/ThemeContext"
 
 export const App = () => {
 	const [restaurant, setRestaurant] = useState(restaurants[0])
@@ -12,19 +13,21 @@ export const App = () => {
 	}
 
 	return (
-		<Layout>
-			<Tabs
-				items={restaurants}
-				currentItem={restaurant}
-				changeItem={changeItem}
-			/>
+		<ThemeContextProvider>
+			<Layout>
+				<Tabs
+					items={restaurants}
+					currentItem={restaurant}
+					changeItem={changeItem}
+				/>
 
-			<Restaurant
-				key={restaurant.id}
-				name={restaurant.name}
-				menu={restaurant.menu}
-				reviews={restaurant.reviews}
-			/>
-		</Layout>
+				<Restaurant
+					key={restaurant.id}
+					name={restaurant.name}
+					menu={restaurant.menu}
+					reviews={restaurant.reviews}
+				/>
+			</Layout>
+		</ThemeContextProvider>
 	)
 }
