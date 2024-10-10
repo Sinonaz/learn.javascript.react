@@ -7,8 +7,8 @@ export const Reviews = ({ reviews }) => {
 			<h3>Reviews</h3>
 
 			<ul className={styles.reviews}>
-				{reviews.map(({ id, text }) => (
-					<ReviewItem key={id} text={text} />
+				{reviews.map(id => (
+					<ReviewItem key={id} id={id} />
 				))}
 			</ul>
 		</>
