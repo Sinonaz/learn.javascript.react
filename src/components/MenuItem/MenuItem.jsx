@@ -11,7 +11,7 @@ export const MenuItem = ({ id }) => {
 	return (
 		<li className={styles.menuItem}>
 			{name}
-			{user.isAuth && <DishCounter />}
+			{user.isAuth && <DishCounter id={id} />}
 		</li>
 	)
 }
