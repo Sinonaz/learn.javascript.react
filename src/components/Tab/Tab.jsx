@@ -5,7 +5,7 @@ export const Tab = ({ tabId, name, changeItem, currentItem }) => (
 	<Button
 		className={styles.tab}
 		text={name}
-		disabled={currentItem.id === tabId}
+		isDisabled={currentItem.id === tabId}
 		isActive={currentItem.id === tabId}
 		onClick={() => changeItem(tabId)}
 	/>
