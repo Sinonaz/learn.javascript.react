@@ -1,12 +1,11 @@
 import styles from "./tab.module.css"
 import { Button } from "../Button/Button"
 
-export const Tab = ({ tabId, name, changeItem, currentItem }) => (
+export const Tab = ({ name, onClick, isActive }) => (
 	<Button
 		className={styles.tab}
 		text={name}
-		isDisabled={currentItem.id === tabId}
-		isActive={currentItem.id === tabId}
-		onClick={() => changeItem(tabId)}
+		isActive={isActive}
+		onClick={onClick}
 	/>
 )
