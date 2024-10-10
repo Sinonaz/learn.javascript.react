@@ -1,9 +1,12 @@
 import { Menu } from "../Menu/Menu"
 import { ReviewForm } from "../ReviewForm/ReviewForm"
 import { Reviews } from "../Reviews/Reviews"
+import { useAuth } from "../UserContext/use-auth"
 import styles from "./restaurant.module.css"
 
 export const Restaurant = ({ id, name, menu, reviews }) => {
+	const { user } = useAuth()
+
 	if (!name) return null
 
 	return (
@@ -14,7 +17,7 @@ export const Restaurant = ({ id, name, menu, reviews }) => {
 
 			<Reviews reviews={reviews} />
 
-			<ReviewForm />
+			{user.isAuth && <ReviewForm />}
 		</div>
 	)
 }
