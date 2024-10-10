@@ -16,10 +16,10 @@ export const userSlice = createSlice({
 	initialState,
 	selectors: {
 		selectUsersIds: state => state.ids,
-		selectUsersById: (state, id) => state.entities[id],
+		selectUserById: (state, id) => state.entities[id],
 		selectUsersList: state => state.items,
 	},
 })
 
-export const { selectUsersIds, selectUsersById, selectUsersList } =
+export const { selectUsersIds, selectUserById, selectUsersList } =
 	userSlice.selectors
