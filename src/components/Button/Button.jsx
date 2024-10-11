@@ -7,8 +7,8 @@ export const Button = ({
 	text,
 	onClick,
 	className,
-	isDisabled,
-	isActive,
+	isDisabled = false,
+	isActive = false,
 }) => {
 	const { value } = useTheme()
 
