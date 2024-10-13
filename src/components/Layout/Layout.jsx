@@ -4,8 +4,9 @@ import { ProgressBar } from "../ProgressBar/ProgressBar"
 import { ThemeButton } from "../ThemeButton/ThemeButton"
 import { AuthButton } from "../AuthButton/AuthButton"
 import { Cart } from "../Cart/Cart"
+import { Outlet } from "react-router-dom"
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
 	return (
 		<div>
 			<ProgressBar />
@@ -16,7 +17,7 @@ export const Layout = ({ children }) => {
 
 			<Header />
 
-			{children}
+			<Outlet />
 
 			<Cart />
 

@@ -1,0 +1,17 @@
+.restaurantTab {
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 15px 15px 0 0;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  background-color: lightgray;
+}
+
+.active {
+  color: #886701;
+  background-color: #ffcd3a;
+}
