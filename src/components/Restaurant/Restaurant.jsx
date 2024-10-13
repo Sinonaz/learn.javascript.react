@@ -5,10 +5,12 @@ import { Reviews } from "../Reviews/Reviews"
 import { useAuth } from "../UserContext/use-auth"
 import styles from "./restaurant.module.css"
 import { selectRestaurantById } from "../../redux/restaurants"
+import { useResolvedPath } from "react-router-dom"
 
 export const Restaurant = ({ id }) => {
 	const restaurant = useSelector(state => selectRestaurantById(state, id))
 	const { menu, reviews } = restaurant
+	const { pathname } = useResolvedPath()
 
 	const { user } = useAuth()
 
@@ -22,7 +24,7 @@ export const Restaurant = ({ id }) => {
 
 			<Reviews reviews={reviews} />
 
-			{user.isAuth && <ReviewForm />}
+			{user.isAuth && pathname.endsWith("/reviews") && <ReviewForm />}
 		</div>
 	)
 }

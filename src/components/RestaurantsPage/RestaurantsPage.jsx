@@ -1,8 +1,9 @@
-import { Restaurant } from "../Restaurant/Restaurant"
 import { RestaurantTabs } from "../RestaurantTabs/RestaurantTabs"
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { selectRestaurantIds } from "../../redux/restaurants"
+
+import { Outlet } from "react-router-dom"
 
 export const RestaurantsPage = () => {
 	const restaurantsIds = useSelector(selectRestaurantIds)
@@ -18,7 +19,7 @@ export const RestaurantsPage = () => {
 				onClick={setActiveRestaurantId}
 			/>
 
-			<Restaurant key={activeRestaurantId} id={activeRestaurantId} />
+			<Outlet />
 		</>
 	)
 }
