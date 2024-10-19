@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { normalizedRestaurants } from "../../normalized-mock"
+import { normalizedRestaurants } from "../../materials/normalized-mock"
 
 const initialState = {
 	entities: normalizedRestaurants.reduce((acc, item) => {
