@@ -9,3 +9,10 @@
   width: 100%;
   text-align: center;
 }
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}

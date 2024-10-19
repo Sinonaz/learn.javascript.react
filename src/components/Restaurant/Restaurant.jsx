@@ -1,18 +1,10 @@
 import { useSelector } from "react-redux"
-import { Menu } from "../Menu/Menu"
-import { ReviewForm } from "../ReviewForm/ReviewForm"
-import { Reviews } from "../Reviews/Reviews"
-import { useAuth } from "../UserContext/use-auth"
 import styles from "./restaurant.module.css"
 import { selectRestaurantById } from "../../redux/restaurants"
-import { useResolvedPath } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 export const Restaurant = ({ id }) => {
 	const restaurant = useSelector(state => selectRestaurantById(state, id))
-	const { menu, reviews } = restaurant
-	const { pathname } = useResolvedPath()
-
-	const { user } = useAuth()
 
 	if (!restaurant) return null
 
@@ -20,11 +12,13 @@ export const Restaurant = ({ id }) => {
 		<div className={styles.restaurant} key={id}>
 			<h2 className={styles.name}>{restaurant.name}</h2>
 
-			<Menu menu={menu} />
+			<div className={styles.links}>
+				<Link to={"menu"}>Menu</Link>
 
-			<Reviews reviews={reviews} />
+				<Link to={"reviews"}>Reviews</Link>
+			</div>
 
-			{user.isAuth && pathname.endsWith("/reviews") && <ReviewForm />}
+			<Outlet />
 		</div>
 	)
 }

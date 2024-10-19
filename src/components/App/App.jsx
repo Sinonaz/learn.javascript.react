@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import { RestaurantPage } from "../RestaurantPage/RestaurantPage"
 import { HomePage } from "../HomePage/HomePage"
 import { DishPage } from "../DishPage/DishPage"
+import { MenuPage } from "../MenuPage/MenuPage"
+import { ReviewsPage } from "../ReviewsPage/ReviewsPage"
 
 const router = createBrowserRouter([
 	{
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{
-				path: "/",
+				index: true,
 				element: <HomePage />,
 			},
 			{
@@ -27,12 +29,16 @@ const router = createBrowserRouter([
 						element: <RestaurantPage />,
 						children: [
 							{
-								path: ":menu",
-								element: <RestaurantPage />,
+								index: true,
+								element: <MenuPage />,
 							},
 							{
-								path: ":reviews",
-								element: <RestaurantPage />,
+								path: "menu",
+								element: <MenuPage />,
+							},
+							{
+								path: "reviews",
+								element: <ReviewsPage />,
 							},
 						],
 					},
@@ -56,11 +62,7 @@ export const App = () => {
 		<Provider store={store}>
 			<ThemeContextProvider>
 				<UserContextProvider>
-					<RouterProvider router={router}>
-						<Layout>
-							<RestaurantsPage />
-						</Layout>
-					</RouterProvider>
+					<RouterProvider router={router} />
 				</UserContextProvider>
 			</ThemeContextProvider>
 		</Provider>

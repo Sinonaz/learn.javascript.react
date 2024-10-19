@@ -6,9 +6,7 @@ export const RestaurantTab = ({ id, name }) => {
 	return (
 		<NavLink
 			className={({ isActive }) =>
-				isActive
-					? classNames(styles.restaurantTab, styles.active)
-					: classNames(styles.restaurantTab)
+				classNames(styles.restaurantTab, isActive && styles.active)
 			}
 			to={id}
 		>
