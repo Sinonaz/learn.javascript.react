@@ -1,9 +1,18 @@
 .restaurant {
+  gap: 20px 40px;
   padding: 30px;
   border-radius: 0 0 20px 20px;
   box-shadow: inset 0 0 0 1px #d1d9e0;
 }
 
 .name {
+  width: 100%;
   text-align: center;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
