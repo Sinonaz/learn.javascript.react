@@ -17,7 +17,7 @@ export const getDish = createAsyncThunk(
 	},
 	{
 		condition: (id, { getState }) => {
-			return selectDishById(getState(), id)
+			return Boolean(selectDishById(getState(), id))
 		},
 	}
 )

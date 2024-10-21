@@ -8,6 +8,7 @@ import { useAuth } from "../UserContext/use-auth"
 import { useEffect } from "react"
 import { getReviews } from "../../redux/reviews/get-reviews"
 import { RequestStatus } from "../../../utils/consts"
+import { getUsers } from "../../redux/users/get-users"
 
 export const ReviewsPage = () => {
 	const dispatch = useDispatch()
@@ -19,6 +20,7 @@ export const ReviewsPage = () => {
 
 	useEffect(() => {
 		dispatch(getReviews(activeRestaurantId))
+		dispatch(getUsers())
 	}, [dispatch, activeRestaurantId])
 
 	const status = useSelector(selectRequestStatus)
