@@ -1,28 +1,53 @@
-import { createSlice } from "@reduxjs/toolkit"
-import { normalizedRestaurants } from "../../normalized-mock"
+import { createEntityAdapter, createSlice } from "@reduxjs/toolkit"
+import { RequestStatus } from "../../../utils/consts"
+import { getRestaurants } from "./get-restaurants"
+import { getRestaurant } from "./get-restaurant"
 
-const initialState = {
-	entities: normalizedRestaurants.reduce((acc, item) => {
-		acc[item.id] = item
-
-		return acc
-	}, {}),
-	ids: normalizedRestaurants.map(({ id }) => id),
-	items: normalizedRestaurants,
-}
+const entityAdapter = createEntityAdapter()
 
 export const restaurantSlice = createSlice({
 	name: "restaurants",
-	initialState,
+	initialState: entityAdapter.getInitialState({
+		requestStatus: {
+			restaurants: RequestStatus.IDLE,
+			restaurant: RequestStatus.IDLE,
+		},
+	}),
 	selectors: {
-		selectRestaurantIds: state => state.ids,
+		selectRestaurantsIds: state => state.ids,
 		selectRestaurantById: (state, id) => state.entities[id],
 		selectRestaurantList: state => state.items,
+		selectRequestStatus: state => state.requestStatus.restaurants,
+		selectRestaurantRequestStatus: state => state.requestStatus.restaurant,
 	},
+	extraReducers: builder =>
+		builder
+			.addCase(getRestaurants.pending, state => {
+				state.requestStatus.restaurants = RequestStatus.IDLE
+			})
+			.addCase(getRestaurants.fulfilled, (state, { payload }) => {
+				entityAdapter.setAll(state, payload)
+				state.requestStatus.restaurants = RequestStatus.FULFILLED
+			})
+			.addCase(getRestaurants.rejected, state => {
+				state.requestStatus.restaurants = RequestStatus.REJECTED
+			})
+			.addCase(getRestaurant.pending, state => {
+				state.requestStatus.restaurant = RequestStatus.IDLE
+			})
+			.addCase(getRestaurant.fulfilled, (state, { payload }) => {
+				entityAdapter.setOne(state, payload)
+				state.requestStatus.restaurant = RequestStatus.FULFILLED
+			})
+			.addCase(getRestaurant.rejected, state => {
+				state.requestStatus.restaurant = RequestStatus.REJECTED
+			}),
 })
 
 export const {
-	selectRestaurantIds,
+	selectRestaurantsIds,
 	selectRestaurantById,
 	selectRestaurantList,
+	selectRequestStatus,
+	selectRestaurantRequestStatus,
 } = restaurantSlice.selectors
