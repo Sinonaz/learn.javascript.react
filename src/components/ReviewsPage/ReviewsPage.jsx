@@ -23,6 +23,10 @@ export const ReviewsPage = () => {
 		dispatch(getUsers())
 	}, [dispatch, activeRestaurantId])
 
+	useEffect(() => {
+		dispatch(getUsers())
+	}, [dispatch])
+
 	const status = useSelector(selectRequestStatus)
 
 	if (status === RequestStatus.IDLE || status === RequestStatus.PENDING) {
