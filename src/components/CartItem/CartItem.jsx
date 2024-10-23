@@ -1,18 +1,25 @@
-import { useSelector } from "react-redux"
-import { selectDishById } from "../../redux/dishes"
 import { DishCounter } from "../DishCounter/DishCounter"
+import { useGetDishQuery } from "../../redux/services/api/api"
 
 export const CartItem = ({ id, amount }) => {
-	const { name } = useSelector(state => selectDishById(state, id)) || {}
+	const { data, isLoading, isError } = useGetDishQuery(id)
 
-	if (!name) {
+	if (isLoading) {
+		return <div>Loading</div>
+	}
+
+	if (isError) {
+		return <div>Error</div>
+	}
+
+	if (!data) {
 		return null
 	}
 
 	return (
 		<div>
 			<div>
-				{name} - {amount}
+				{data.name} - {amount}
 			</div>
 			<DishCounter id={id} />
 		</div>
