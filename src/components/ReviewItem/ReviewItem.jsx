@@ -3,11 +3,13 @@ import styles from "./reviewItem.module.css"
 import { selectReviewById } from "../../redux/reviews"
 
 export const ReviewItem = ({ id }) => {
-	const { text } = useSelector(state => selectReviewById(state, id))
+	const review = useSelector(state => selectReviewById(state, id))
+
+	if (!review) return null
 
 	return (
 		<li className={styles.reviewItem} key={id}>
-			{text}
+			{review.text}
 		</li>
 	)
 }

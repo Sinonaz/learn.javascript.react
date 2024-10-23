@@ -1,23 +1,40 @@
-import { RestaurantTabs } from "../RestaurantTabs/RestaurantTabs"
-import { useState } from "react"
-import { useSelector } from "react-redux"
-import { selectRestaurantIds } from "../../redux/restaurants"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import {
+	selectRequestStatus,
+	selectRestaurantsIds,
+} from "../../redux/restaurants"
 
 import { Outlet } from "react-router-dom"
+import { getRestaurants } from "../../redux/restaurants/get-restaurants"
+import { RestaurantTab } from "../RestaurantTab/RestaurantTab"
+import { RequestStatus } from "../../../utils/consts"
 
 export const RestaurantsPage = () => {
-	const restaurantsIds = useSelector(selectRestaurantIds)
+	const dispatch = useDispatch()
 
-	const [activeRestaurantId, setActiveRestaurantId] = useState(
-		restaurantsIds[0]
-	)
+	useEffect(() => {
+		dispatch(getRestaurants())
+	}, [dispatch])
+
+	const restaurantsIds = useSelector(selectRestaurantsIds)
+	const status = useSelector(selectRequestStatus)
+
+	if (status === RequestStatus.IDLE || status === RequestStatus.PENDING) {
+		return <div>Loading</div>
+	}
+
+	if (status === RequestStatus.REJECTED) {
+		return <div>Error</div>
+	}
 
 	return (
 		<>
-			<RestaurantTabs
-				activeRestaurantId={activeRestaurantId}
-				onClick={setActiveRestaurantId}
-			/>
+			<div style={{ display: "flex" }}>
+				{restaurantsIds.map(id => (
+					<RestaurantTab key={id} id={id} />
+				))}
+			</div>
 
 			<Outlet />
 		</>
