@@ -8,7 +8,7 @@ export const UserContextProvider = ({ children }) => {
 		setAuth(user => {
 			return user.isAuth
 				? { isAuth: false }
-				: { isAuth: true, name: "ChicChiric" }
+				: { isAuth: true, name: "ChicChiric", id: 666 }
 		})
 
 	return (

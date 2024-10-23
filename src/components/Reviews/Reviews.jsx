@@ -5,8 +5,8 @@ export const Reviews = ({ reviews }) => {
 	return (
 		<div>
 			<ul className={styles.reviews}>
-				{reviews.map(id => (
-					<ReviewItem key={id} id={id} />
+				{reviews.map(({ id, text }) => (
+					<ReviewItem key={id} text={text} />
 				))}
 			</ul>
 		</div>
