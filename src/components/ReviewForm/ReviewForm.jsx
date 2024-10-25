@@ -3,13 +3,29 @@ import { ACTION_TYPE } from "./constants"
 import { useForm } from "./use-form"
 import styles from "./reviewForm.module.css"
 import { Button } from "../Button/Button"
+import { useAddReviewMutation } from "../../redux/services/api/api"
+import { useAuth } from "../UserContext/use-auth"
 
-export const ReviewForm = () => {
+export const ReviewForm = ({ restaurantId }) => {
+	const { user } = useAuth()
+
 	const { name, text, rating, setAction, increaseRating, decreaseRating } =
 		useForm()
 
+	const [addReview] = useAddReviewMutation()
+
 	return (
-		<form className={styles.form} onReset={() => setAction(ACTION_TYPE.CLEAR)}>
+		<form
+			className={styles.form}
+			onReset={() => setAction(ACTION_TYPE.CLEAR)}
+			onSubmit={e => {
+				e.preventDefault()
+				addReview({
+					restaurantId,
+					review: { id: "", userId: user.id, text, rating },
+				})
+			}}
+		>
 			<div>
 				<label className={styles.fieldWrap}>
 					Name
@@ -17,7 +33,7 @@ export const ReviewForm = () => {
 						className={styles.field}
 						type='text'
 						name='name'
-						value={name}
+						value={user.isAuth ? user.name : name}
 						onChange={({ target }) => setAction(ACTION_TYPE.NAME, target.value)}
 					/>
 				</label>

@@ -1,38 +1,29 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import {
-	selectRequestStatus,
-	selectRestaurantsIds,
-} from "../../redux/restaurants"
-
 import { Outlet } from "react-router-dom"
-import { getRestaurants } from "../../redux/restaurants/get-restaurants"
 import { RestaurantTab } from "../RestaurantTab/RestaurantTab"
-import { RequestStatus } from "../../../utils/consts"
+import { useGetRestaurantsQuery } from "../../redux/services/api/api"
 
 export const RestaurantsPage = () => {
-	const dispatch = useDispatch()
+	const { data, isFetching, isError } = useGetRestaurantsQuery(undefined, {
+		refetchOnMountOrArgChange: true,
+	})
 
-	useEffect(() => {
-		dispatch(getRestaurants())
-	}, [dispatch])
-
-	const restaurantsIds = useSelector(selectRestaurantsIds)
-	const status = useSelector(selectRequestStatus)
-
-	if (status === RequestStatus.IDLE || status === RequestStatus.PENDING) {
+	if (isFetching) {
 		return <div>Loading</div>
 	}
 
-	if (status === RequestStatus.REJECTED) {
+	if (isError) {
 		return <div>Error</div>
+	}
+
+	if (!data.length) {
+		return null
 	}
 
 	return (
 		<>
 			<div style={{ display: "flex" }}>
-				{restaurantsIds.map(id => (
-					<RestaurantTab key={id} id={id} />
+				{data.map(({ id, name }) => (
+					<RestaurantTab key={id} id={id} name={name} />
 				))}
 			</div>
 
