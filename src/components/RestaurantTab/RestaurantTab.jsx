@@ -1,16 +1,10 @@
-import { NavLink } from "react-router-dom"
+import Link from "next/link"
 import styles from "./restaurantTab.module.css"
-import classNames from "classnames"
 
 export const RestaurantTab = ({ id, name }) => {
-	return (
-		<NavLink
-			className={({ isActive }) =>
-				classNames(styles.restaurantTab, isActive && styles.active)
-			}
-			to={id}
-		>
-			{name}
-		</NavLink>
-	)
+  return (
+    <Link className={styles.restaurantTab} href={`/restaurants/${id}`}>
+      {name}
+    </Link>
+  )
 }

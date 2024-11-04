@@ -1,11 +1,13 @@
+"use client"
+
 import { useState } from "react"
 import { useClock } from "./use-clock"
 
 export const Clock = () => {
-	const dateNow = new Date().toLocaleTimeString()
-	const [time, setTime] = useState(dateNow)
+  const dateNow = new Date().toLocaleTimeString()
+  const [time, setTime] = useState(dateNow)
 
-	useClock(setTime)
+  useClock(setTime)
 
-	return <p>{time}</p>
+  return <p>{time}</p>
 }
