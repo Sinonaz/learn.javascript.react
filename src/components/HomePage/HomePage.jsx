@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import styles from "./homePageLink.module.css"
 
 export const HomePage = () => (
-	<Link to={"/restaurants"} className={styles.homePageLink}>
-		Restaurant list
-	</Link>
+  <Link href={"/restaurants"} className={styles.homePageLink}>
+    Restaurant list
+  </Link>
 )
