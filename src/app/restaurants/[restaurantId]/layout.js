@@ -1,7 +1,7 @@
 "use client"
 
-import { RestaurantPage as RestaurantPageComponent } from "../../../components/RestaurantPage/RestaurantPage"
+import { RestaurantPage } from "../../../components/RestaurantPage/RestaurantPage"
 
-export default function RestaurantPageLayout({ children }) {
-  return <RestaurantPageComponent>{children}</RestaurantPageComponent>
+export default function RestaurantPageComponent({ children }) {
+  return <RestaurantPage>{children}</RestaurantPage>
 }

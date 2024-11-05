@@ -1,7 +1,7 @@
 "use client"
 
-import { MenuPage as MenuPageComponent } from "../../../../components/MenuPage/MenuPage"
+import { MenuPage } from "../../../../components/MenuPage/MenuPage"
 
-export default function menuPage() {
-  return <MenuPageComponent />
+export default function MenuPageComponent() {
+  return <MenuPage />
 }
